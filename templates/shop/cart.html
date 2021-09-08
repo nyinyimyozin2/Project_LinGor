@@ -1,0 +1,85 @@
+{% extends '../_template.html' %}
+{% block title %}
+{{user}}'s cart
+{% endblock title %}
+{% load crispy_forms_tags %}
+{% block style %}
+.windows{
+  border-radius:5px;
+ box-shadow: 10px 10px 50px #aaaaaa;
+  padding:2%;
+  margin-top:3%;
+  margin-bottom:5%;
+}
+{% endblock style %}
+
+{% block body %}
+{% if messages %}
+{% for messages in messages  %}
+<div class="alert alert-info">
+{{messages}}
+</div>
+{% endfor %}
+{% endif %}
+<div class="row">
+  <div class="col-12 windows">
+  <table class="table table-borderless table-white">
+  <thead>
+    <tr>
+      <th scope="col">item</th>
+      <th scope="col">quantity</th>
+      <th scope="col">price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for items in items %}
+    <tr>
+      <th scope="row">{{items.item.name}}</th>
+      <td>{{items.quantity}}</td>
+      <td>{{items.total_item_price}}$</td>
+      <td><button data-product="{{items.item.id}}" data-action = "remove" class = "btn btn-danger cart">Remove</button></td>
+    </tr>
+
+    {% endfor %}
+          <tr>
+      <th scope="col">Total</th>
+      <th scope="col"></th>
+      <th scope="col">{{order.total_order_price}}$</th>
+      <th scope="col"><a href="/shop" class="btn btn-info">Continue Shopping</a></th>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="col-12 windows">
+  <form method="POST" action="/shop/checkout">
+  {% csrf_token %}
+
+
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" required placeholder="1234 Main St" name="address">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" required id="inputCity" name="city">
+    </div>
+        <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <input type="text" class="form-control" required id="inputState" name="state">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" required id="inputZip" name="zipcode">
+    </div>
+  </div>
+    <div class="form-group">
+      {{form.payment_method}}
+    </div>
+ 
+   <button type="submit" class="btn btn-primary">checkout</button>
+</form>
+</div>
+</div>
+{% endblock body %}  

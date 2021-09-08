@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Monoton&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+        <style> 
+                .navbar-brand{
+                    color:black;
+                }
+
+                .navbar-nav{
+                    font-family: 'Montserrat', sans-serif;
+                }
+                .nav-link{
+                    padding-left:5%;
+                    padding-right:5%;
+                }
+                .container{
+                    max-width:80%;
+                }
+                .nav-item{
+                    float:right;
+                }
+                // Extra small devices (portrait phones, less than 576px)
+                @media (max-width: 575.98px) { 
+                    .container{
+                        max-width:100%;
+                    }
+                 }
+
+                // Small devices (landscape phones, 576px and up)
+                @media (min-width: 576px) and (max-width: 767.98px) { .container{
+                    max-width:100%;
+                } }
+
+                // Medium devices (tablets, 768px and up)
+                @media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+                // Large devices (desktops, 992px and up)
+                @media (min-width: 992px) and (max-width: 1199.98px) { ... }
+
+                // Extra large devices (large desktops, 1200px and up)
+                @media (min-width: 1200px) { ... }
+                .page-footer{
+                    background-color:rgb(30,30,30);
+                    color:white;
+                }
+            {% block style %}
+            {% endblock style %} 
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="/" style="font-family: 'Monoton', cursive;font-size:35px;">LinGor</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link "href="/">Home</a>
+                <a class="nav-link" href="/shop">Shop</a>
+                <a class="nav-link" href="/about">About</a>
+            </div>
+            </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Hi ! {{user}}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                               
+                                <a class="dropdown-item" href="/shop/cart">Cart</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/shop/logout">Logout</a>
+                                </div>
+                            </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shop/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shop/register">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>  
+        
+            {% block body %}
+            {% endblock body %}
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/popper.js"></script>
+        <script src="/static/js/bootstrap.js"></script>
+
+        <!-- Footer -->
+<footer class="page-footer font-small blue pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Footer Content</h5>
+        <p>Here you can use rows and columns to organize your footer content.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h5 class="text-uppercase">Links</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#"> lingor.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+            
+        <script>
+            var user = "{{user}}"
+             function getToken(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        //CSRF TOKEN
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            const csrftoken = getToken('csrftoken');   
+        </script>
+                <script src="/static/js/cart.js"></script>
+        {% block scripts %}
+        {% endblock scripts %}
+        </div>
+    </body>
+</html>

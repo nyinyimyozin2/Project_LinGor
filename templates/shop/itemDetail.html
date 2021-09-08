@@ -1,0 +1,29 @@
+{% extends '../_template.html' %}
+{% block title %}
+{{item.name}}
+{% endblock title %}
+
+{% block style %}
+.row{
+    padding:2%;
+}
+
+{% endblock style %}
+
+{% block body %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="display-1">{{item.name}}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-6">
+        <img src="/static/images{{item.image_url}}" class="img-thumbnail" alt="Responsive image" width="70%" height="70%">
+    </div>
+    <div class="col-sm-12 col-md-6">
+    
+        <p class="lead">{{item.description}}</p><br>
+         <button data-product="{{item.id}}" data-action = "add" class = "btn btn-primary cart">Add To Cart</button>
+    </div>
+</div>
+{% endblock body %}

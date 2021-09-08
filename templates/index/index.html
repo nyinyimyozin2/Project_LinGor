@@ -1,0 +1,78 @@
+{% extends '../_template.html' %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block style %}
+.jumbotron{
+  text-align:center;
+  color:white;
+}
+.my-4{
+  background-color:white;
+}
+#intro,.col-sm-12{
+  margin-top:5%;
+  margin-bottom:5%;
+}
+.display-4{
+  margin-bottom:5%;
+}
+.list-group{
+  text-align:center;
+}
+
+{% endblock style %}
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid" id="leading-head">
+  <div class="container">
+    <h1 class="display-4"><img style="opacity:80%"src="static/media/logo.png" alt="logo"width="250"height="250"></h1>
+    <p class="lead">Biggest Tech items delivery network across the world.</p>
+    <hr class="my-4">
+    <p class="">Get Every brand in one place without a single extra penny</p>
+  </div>
+</div>
+<div class="row" id="intro">
+  <div class="col-sm-12 col-md-4"><h1 class="display-4">How does it work</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+  <div class="col-sm-12 col-md-4"><h1 class="display-4">How do we profit</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+  <div class="col-sm-12 col-md-4"><h1 class="display-4">How is it Reliable</h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+</div>
+<div class="row">
+  <div class="col-sm-12 col-md-4"></div>
+  <div class="col-sm-12 col-md-4">
+  <ul class="list-group">
+  <li class="list-group-item"><h1 class="diaply-4">Top Brands</h1></li>
+  <li class="list-group-item">Apple</li>
+  <li class="list-group-item">Hawai</li>
+  <li class="list-group-item">Samsung</li>
+  <li class="list-group-item">Oppo</li>
+</ul>
+  </div>
+  <div class="col-sm-12 col-md-4"></div>
+</div>
+<script src="static/js/threejsvanta.js"></script>
+<script src="static/js/vantanet.js"></script>
+
+{% endblock body %}
+
+{% block scripts %}
+<script>
+  VANTA.NET({
+    el: "#leading-head",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x0,
+  backgroundColor: 0x6c637d,
+  points: 19.00,
+  spacing: 20.00
+  })
+</script>
+{% endblock scripts %}
+

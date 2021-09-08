@@ -1,0 +1,35 @@
+{% extends 'shop/_signinoutForms.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+LinGor | Sign In
+{% endblock title %}
+
+{% block style %}
+
+.form-container{
+    margin-top:15;
+    color:white;
+}
+.form-group{
+    width:100%;
+    margin:auto;
+    padding:30%;
+    height:100vh;
+}
+{% endblock style %}
+
+{% block form %}
+    <div class="form-container">
+        <form method='POST' class="form-group">
+        <h1 class="display-4">Sign In</h1>
+        {% csrf_token %}
+        {{form|crispy}}
+        <br>
+        <button type="submit" class="btn btn-success">Login</button>
+        <hr class="my-4 bg-light">
+        <p class="lead">Don't have an account?<p><a href="/shop/register">Sign up</a>
+        </form>
+
+    </div>
+{% endblock form %}

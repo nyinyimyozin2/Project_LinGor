@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Monoton&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+        <style>
+        .display-2{
+    font-family:Monoton;
+}
+.parent-content{
+    width:80%;
+    margin:auto;
+    color:white;
+    text-align:center;
+}.child-content{
+
+}
+.row{
+    height:100vh;
+}
+.animation-col{
+background: rgb(0,0,0);
+background: -moz-linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(14,14,14,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(14,14,14,1) 100%);
+background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(14,14,14,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#0e0e0e",GradientType=1);
+}
+.form-col{
+    color:white;
+    background-color:rgba(13,13,13,1);
+}
+.logo-pane{
+    width:100%;
+    margin:auto;
+}
+            {% block style %}
+            {% endblock style %} 
+        </style>
+
+    </head>
+    <body>
+        <div class="container-fluid">
+        <div class = "row" id="animations" >
+            <div class="col-lg-5 animation-col" >
+                <div class="row">
+                    <div class="col-12 logo-pane">
+                                        <div class="parent-content">
+                    <div class="child-content">
+                        <h1 class="display-2">LinGor</h1>
+                        <hr class = "my-4" style="background-color:white;">
+                        <p class="lead">Join Today For All in One market Place</p>
+                    </div>
+                </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 form-col" >
+                            {% block form %}
+                            {% endblock form %}
+            </div>
+        </div>
+    </div>
+
+        <script src="/static/js/jquery.js"></script>
+        <script src="/static/js/popper.js"></script>
+        <script src="/static/js/bootstrap.js"></script>
+        <script src="/static/js/threejsvanta.js"></script>
+<script src="/static/js/vantanet.js"></script>
+<script>
+  VANTA.NET({
+    el: "#animations",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: 0x0,
+  backgroundColor: 0x6c637d,
+  points: 19.00,
+  spacing: 20.00
+  })
+</script>
+        {% block scripts %}
+        {% endblock scripts %}
+    </body>
+</html>
